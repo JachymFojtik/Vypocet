@@ -6,9 +6,10 @@ namespace Vypocet
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Fsum(5,3));//for
-            Console.WriteLine(Wsum(8,4));//while
-            Console.WriteLine(DWsum(7,14));//do-while
+            Console.WriteLine(Fsum(7,15));//for
+            Console.WriteLine(Wsum(7, 15));//while
+            Console.WriteLine(DWsum(7, 15));//do-while
+            Console.WriteLine(Rsum(7, 15));//rekurze
             Console.ReadKey();
         }
         private static int Fsum(int x, int n)
@@ -24,9 +25,9 @@ namespace Vypocet
         {
             int res = 1;
             int i = 1;
-            while (i > n)
+            while (i <= n)
             {
-                res += (i % 2 == 0) ? (x * n) / Factorial(i) : -(x * n) / Factorial(i);
+                res += (i % 2 == 1) ? (x * n) / Factorial(i) : -(x * n) / Factorial(i);
                 i++;
             }
             return res;
@@ -37,9 +38,23 @@ namespace Vypocet
             int i = 1;
             do
             {
-                res += (i % 2 == 0) ? (x * n) / Factorial(i) : -(x * n) / Factorial(i);
+                res += (i % 2 == 1) ? (x * n) / Factorial(i) : -(x * n) / Factorial(i);
                 i++;
-            } while (i > n);
+            } while (i <= n);
+            return res;
+        }            
+        static int index = 1;
+        static int res = 1;
+        private static int Rsum(int x, int n)
+        {
+
+
+            if (index <= n)
+            {
+                res += (index % 2 == 1) ? (x * n) / Factorial(index) : -(x * n) / Factorial(index);
+                index++;
+                Rsum(x, n);
+            }
             return res;
         }
 
