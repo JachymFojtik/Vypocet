@@ -6,6 +6,8 @@ namespace Vypocet
     {
         static void Main(string[] args)
         {
+
+
             Console.WriteLine(Fsum(7,15));//for
             Console.WriteLine(Wsum(7, 15));//while
             Console.WriteLine(DWsum(7, 15));//do-while
@@ -47,21 +49,25 @@ namespace Vypocet
         static int res = 1;
         private static int Rsum(int x, int n)
         {
-
-
+            if (index == 1)
+            {
+                res = 1;
+            }
             if (index <= n)
             {
                 res += (index % 2 == 1) ? (x * n) / Factorial(index) : -(x * n) / Factorial(index);
                 index++;
                 Rsum(x, n);
             }
+            index = 1;
+
             return res;
         }
 
         private static int Factorial(int x)
         {
             int res = 1;
-            while (x != 1)
+            while (x > 1)
             {
                 res *= x;
                 x -= 1;
